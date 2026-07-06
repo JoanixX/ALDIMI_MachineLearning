@@ -126,7 +126,7 @@
     "n_test": 2000,
     "onnx_file": "prioridad_atencion.onnx",
     "pickle_file": "prioridad_atencion.pkl",
-    "trained_at": "2026-07-06T18:59:50.271508+00:00"
+    "trained_at": "2026-07-06T20:06:08.727273+00:00"
   },
   {
     "name": "stock_critico_7d",
@@ -246,7 +246,7 @@
     "n_test": 3600,
     "onnx_file": "stock_critico_7d.onnx",
     "pickle_file": "stock_critico_7d.pkl",
-    "trained_at": "2026-07-06T18:59:59.464680+00:00"
+    "trained_at": "2026-07-06T20:06:19.338665+00:00"
   },
   {
     "name": "stock_critico_14d",
@@ -366,7 +366,7 @@
     "n_test": 3600,
     "onnx_file": "stock_critico_14d.onnx",
     "pickle_file": "stock_critico_14d.pkl",
-    "trained_at": "2026-07-06T19:00:04.965149+00:00"
+    "trained_at": "2026-07-06T20:06:25.675519+00:00"
   },
   {
     "name": "demanda_consumo",
@@ -390,7 +390,7 @@
       {
         "algoritmo": "random_forest",
         "mae": 4.3852532636064305,
-        "rmse": 8.047481170471318,
+        "rmse": 8.04748117047132,
         "r2": 0.8493886728187284
       },
       {
@@ -458,7 +458,7 @@
     "n_test": 3442,
     "onnx_file": "demanda_consumo.onnx",
     "pickle_file": "demanda_consumo.pkl",
-    "trained_at": "2026-07-06T19:00:10.522701+00:00"
+    "trained_at": "2026-07-06T20:06:31.731453+00:00"
   },
   {
     "name": "duracion_estadia",
@@ -566,7 +566,7 @@
     "n_test": 2000,
     "onnx_file": "duracion_estadia.onnx",
     "pickle_file": "duracion_estadia.pkl",
-    "trained_at": "2026-07-06T19:00:41.306443+00:00"
+    "trained_at": "2026-07-06T20:07:05.298021+00:00"
   },
   {
     "name": "proyeccion_donaciones",
@@ -576,7 +576,7 @@
     "selection_metric": "mae",
     "selected_algorithm": "random_forest",
     "metrics": {
-      "mae": 4623.75029333333,
+      "mae": 4623.750293333331,
       "rmse": 6110.721150071089,
       "r2": 0.5473593879593217
     },
@@ -589,7 +589,7 @@
       },
       {
         "algoritmo": "random_forest",
-        "mae": 4623.75029333333,
+        "mae": 4623.750293333331,
         "rmse": 6110.721150071089,
         "r2": 0.5473593879593217
       },
@@ -623,6 +623,6 @@
     "n_test": 15,
     "onnx_file": "proyeccion_donaciones.onnx",
     "pickle_file": "proyeccion_donaciones.pkl",
-    "trained_at": "2026-07-06T19:00:42.202077+00:00"
+    "trained_at": "2026-07-06T20:07:06.895240+00:00"
   }
 ]
