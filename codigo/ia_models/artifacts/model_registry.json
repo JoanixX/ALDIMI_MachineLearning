@@ -1,0 +1,628 @@
+[
+  {
+    "name": "prioridad_atencion",
+    "task": "classification",
+    "description": "Nivel de prioridad de atencion del paciente (Bajo/Medio/Alto)",
+    "split": "stratified",
+    "selection_metric": "f1_macro",
+    "selected_algorithm": "xgboost",
+    "metrics": {
+      "accuracy": 0.8585,
+      "precision_macro": 0.8047944771576602,
+      "recall_macro": 0.7409152304993838,
+      "f1_macro": 0.7659472246002205,
+      "precision_weighted": 0.8568826453022979,
+      "recall_weighted": 0.8585,
+      "f1_weighted": 0.8565194637894422
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "accuracy": 0.803,
+        "precision_macro": 0.6956971956822352,
+        "recall_macro": 0.6997027629883316,
+        "f1_macro": 0.697660716128721,
+        "precision_weighted": 0.8044291080594526,
+        "recall_weighted": 0.803,
+        "f1_weighted": 0.8036809755071591
+      },
+      {
+        "algoritmo": "random_forest",
+        "accuracy": 0.8535,
+        "precision_macro": 0.839724490277781,
+        "recall_macro": 0.6736093278902432,
+        "f1_macro": 0.7074044542857543,
+        "precision_weighted": 0.856359499486174,
+        "recall_weighted": 0.8535,
+        "f1_weighted": 0.8465944870880775
+      },
+      {
+        "algoritmo": "xgboost",
+        "accuracy": 0.8585,
+        "precision_macro": 0.8047944771576602,
+        "recall_macro": 0.7409152304993838,
+        "f1_macro": 0.7659472246002205,
+        "precision_weighted": 0.8568826453022979,
+        "recall_weighted": 0.8585,
+        "f1_weighted": 0.8565194637894422
+      }
+    ],
+    "numeric_features": [
+      "edad",
+      "dias_hospedaje",
+      "num_controles_mes",
+      "num_quimios_mes",
+      "hemoglobina_g_dl",
+      "neutrofilos",
+      "plaquetas",
+      "temperatura_c",
+      "peso_kg",
+      "imc",
+      "distancia_origen_km",
+      "ingreso_familiar_mensual",
+      "acompanante_presente",
+      "requiere_apoyo_psicosocial"
+    ],
+    "categorical_features": [
+      "sexo",
+      "region_origen",
+      "diagnostico_general",
+      "estado_tratamiento",
+      "seguro_salud",
+      "alfabetizacion_digital"
+    ],
+    "categorical_values": {
+      "sexo": [
+        "F",
+        "M"
+      ],
+      "region_origen": [
+        "Arequipa",
+        "Ayacucho",
+        "Cajamarca",
+        "Cusco",
+        "Huánuco",
+        "Junín",
+        "La Libertad",
+        "Lima",
+        "Loreto",
+        "Piura",
+        "Puno",
+        "San Martín"
+      ],
+      "diagnostico_general": [
+        "Leucemia linfoblástica aguda",
+        "Leucemia mieloide",
+        "Linfoma",
+        "Neuroblastoma",
+        "Sarcoma",
+        "Tumor sólido"
+      ],
+      "estado_tratamiento": [
+        "En tratamiento",
+        "Inicio",
+        "Recaída",
+        "Seguimiento"
+      ],
+      "seguro_salud": [
+        "EsSalud",
+        "Ninguno",
+        "Privado",
+        "SIS"
+      ],
+      "alfabetizacion_digital": [
+        "Alta",
+        "Baja",
+        "Media",
+        "desconocido"
+      ]
+    },
+    "class_labels": [
+      "Bajo",
+      "Medio",
+      "Alto"
+    ],
+    "n_train": 8000,
+    "n_test": 2000,
+    "onnx_file": "prioridad_atencion.onnx",
+    "pickle_file": "prioridad_atencion.pkl",
+    "trained_at": "2026-07-06T18:59:50.271508+00:00"
+  },
+  {
+    "name": "stock_critico_7d",
+    "task": "classification",
+    "description": "Alerta de stock critico a 7 dias por item de inventario",
+    "split": "temporal",
+    "selection_metric": "f1_macro",
+    "selected_algorithm": "random_forest",
+    "metrics": {
+      "accuracy": 0.9525,
+      "precision_macro": 0.8735800436459997,
+      "recall_macro": 0.9320042472921048,
+      "f1_macro": 0.8996123922924626,
+      "precision_weighted": 0.9578071173181093,
+      "recall_weighted": 0.9525,
+      "f1_weighted": 0.9542204158649602
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "accuracy": 0.9166666666666666,
+        "precision_macro": 0.8031711317659924,
+        "recall_macro": 0.8478804730886305,
+        "f1_macro": 0.8231269967815664,
+        "precision_weighted": 0.9238216255256533,
+        "recall_weighted": 0.9166666666666666,
+        "f1_weighted": 0.9195250217433696
+      },
+      {
+        "algoritmo": "random_forest",
+        "accuracy": 0.9525,
+        "precision_macro": 0.8735800436459997,
+        "recall_macro": 0.9320042472921048,
+        "f1_macro": 0.8996123922924626,
+        "precision_weighted": 0.9578071173181093,
+        "recall_weighted": 0.9525,
+        "f1_weighted": 0.9542204158649602
+      },
+      {
+        "algoritmo": "xgboost",
+        "accuracy": 0.9547222222222222,
+        "precision_macro": 0.8892628205128206,
+        "recall_macro": 0.9104776865777261,
+        "f1_macro": 0.8994592421851749,
+        "precision_weighted": 0.9561603454415954,
+        "recall_weighted": 0.9547222222222222,
+        "f1_weighted": 0.9553226817280576
+      }
+    ],
+    "numeric_features": [
+      "ocupacion_familias",
+      "stock_inicio",
+      "ingreso_stock",
+      "consumo_real"
+    ],
+    "categorical_features": [
+      "categoria",
+      "unidad_medida",
+      "item_id"
+    ],
+    "categorical_values": {
+      "categoria": [
+        "alimentos",
+        "higiene",
+        "insumos_medicos",
+        "medicamentos_soporte"
+      ],
+      "unidad_medida": [
+        "frasco",
+        "kg",
+        "lata",
+        "litro",
+        "paquete",
+        "par",
+        "rollo",
+        "sobre",
+        "unidad"
+      ],
+      "item_id": [
+        "ITM001",
+        "ITM002",
+        "ITM003",
+        "ITM004",
+        "ITM005",
+        "ITM006",
+        "ITM007",
+        "ITM008",
+        "ITM009",
+        "ITM010",
+        "ITM011",
+        "ITM012",
+        "ITM013",
+        "ITM014",
+        "ITM015",
+        "ITM016",
+        "ITM017",
+        "ITM018",
+        "ITM019",
+        "ITM020",
+        "ITM021",
+        "ITM022",
+        "ITM023",
+        "ITM024",
+        "ITM025",
+        "ITM026",
+        "ITM027",
+        "ITM028",
+        "ITM029",
+        "ITM030"
+      ]
+    },
+    "class_labels": [
+      "normal",
+      "critico"
+    ],
+    "n_train": 14400,
+    "n_test": 3600,
+    "onnx_file": "stock_critico_7d.onnx",
+    "pickle_file": "stock_critico_7d.pkl",
+    "trained_at": "2026-07-06T18:59:59.464680+00:00"
+  },
+  {
+    "name": "stock_critico_14d",
+    "task": "classification",
+    "description": "Alerta de stock critico a 14 dias por item de inventario",
+    "split": "temporal",
+    "selection_metric": "f1_macro",
+    "selected_algorithm": "random_forest",
+    "metrics": {
+      "accuracy": 0.9947222222222222,
+      "precision_macro": 0.8255240841978391,
+      "recall_macro": 0.8135553689709861,
+      "f1_macro": 0.8194254879339794,
+      "precision_weighted": 0.9946268455942492,
+      "recall_weighted": 0.9947222222222222,
+      "f1_weighted": 0.9946728010961191
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "accuracy": 0.9902777777777778,
+        "precision_macro": 0.6810924369747899,
+        "recall_macro": 0.7010448735889542,
+        "f1_macro": 0.6905325051393709,
+        "precision_weighted": 0.9908018207282914,
+        "recall_weighted": 0.9902777777777778,
+        "f1_weighted": 0.9905315841051598
+      },
+      {
+        "algoritmo": "random_forest",
+        "accuracy": 0.9947222222222222,
+        "precision_macro": 0.8255240841978391,
+        "recall_macro": 0.8135553689709861,
+        "f1_macro": 0.8194254879339794,
+        "precision_weighted": 0.9946268455942492,
+        "recall_weighted": 0.9947222222222222,
+        "f1_weighted": 0.9946728010961191
+      },
+      {
+        "algoritmo": "xgboost",
+        "accuracy": 0.9938888888888889,
+        "precision_macro": 0.8309623430962343,
+        "recall_macro": 0.6844854930497248,
+        "f1_macro": 0.7365584959885043,
+        "precision_weighted": 0.9927935843793585,
+        "recall_weighted": 0.9938888888888889,
+        "f1_weighted": 0.9930209954895621
+      }
+    ],
+    "numeric_features": [
+      "ocupacion_familias",
+      "stock_inicio",
+      "ingreso_stock",
+      "consumo_real"
+    ],
+    "categorical_features": [
+      "categoria",
+      "unidad_medida",
+      "item_id"
+    ],
+    "categorical_values": {
+      "categoria": [
+        "alimentos",
+        "higiene",
+        "insumos_medicos",
+        "medicamentos_soporte"
+      ],
+      "unidad_medida": [
+        "frasco",
+        "kg",
+        "lata",
+        "litro",
+        "paquete",
+        "par",
+        "rollo",
+        "sobre",
+        "unidad"
+      ],
+      "item_id": [
+        "ITM001",
+        "ITM002",
+        "ITM003",
+        "ITM004",
+        "ITM005",
+        "ITM006",
+        "ITM007",
+        "ITM008",
+        "ITM009",
+        "ITM010",
+        "ITM011",
+        "ITM012",
+        "ITM013",
+        "ITM014",
+        "ITM015",
+        "ITM016",
+        "ITM017",
+        "ITM018",
+        "ITM019",
+        "ITM020",
+        "ITM021",
+        "ITM022",
+        "ITM023",
+        "ITM024",
+        "ITM025",
+        "ITM026",
+        "ITM027",
+        "ITM028",
+        "ITM029",
+        "ITM030"
+      ]
+    },
+    "class_labels": [
+      "normal",
+      "critico"
+    ],
+    "n_train": 14400,
+    "n_test": 3600,
+    "onnx_file": "stock_critico_14d.onnx",
+    "pickle_file": "stock_critico_14d.pkl",
+    "trained_at": "2026-07-06T19:00:04.965149+00:00"
+  },
+  {
+    "name": "demanda_consumo",
+    "task": "regression",
+    "description": "Consumo diario esperado por item (serie con lags de 1/7/14 dias)",
+    "split": "temporal",
+    "selection_metric": "mae",
+    "selected_algorithm": "xgboost",
+    "metrics": {
+      "mae": 4.258754034455885,
+      "rmse": 8.787542655899468,
+      "r2": 0.8204139536343682
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "mae": 6.6333410807669955,
+        "rmse": 14.57857509402841,
+        "r2": 0.5057259004491851
+      },
+      {
+        "algoritmo": "random_forest",
+        "mae": 4.3852532636064305,
+        "rmse": 8.047481170471318,
+        "r2": 0.8493886728187284
+      },
+      {
+        "algoritmo": "xgboost",
+        "mae": 4.258754034455885,
+        "rmse": 8.787542655899468,
+        "r2": 0.8204139536343682
+      }
+    ],
+    "numeric_features": [
+      "consumo_lag_1",
+      "consumo_lag_7",
+      "consumo_lag_14",
+      "consumo_media_7",
+      "dia_semana",
+      "mes",
+      "ocupacion_lag_1"
+    ],
+    "categorical_features": [
+      "categoria",
+      "item_id"
+    ],
+    "categorical_values": {
+      "categoria": [
+        "alimentos",
+        "higiene",
+        "insumos_medicos",
+        "medicamentos_soporte"
+      ],
+      "item_id": [
+        "ITM001",
+        "ITM002",
+        "ITM003",
+        "ITM004",
+        "ITM005",
+        "ITM006",
+        "ITM007",
+        "ITM008",
+        "ITM009",
+        "ITM010",
+        "ITM011",
+        "ITM012",
+        "ITM013",
+        "ITM014",
+        "ITM015",
+        "ITM016",
+        "ITM017",
+        "ITM018",
+        "ITM019",
+        "ITM020",
+        "ITM021",
+        "ITM022",
+        "ITM023",
+        "ITM024",
+        "ITM025",
+        "ITM026",
+        "ITM027",
+        "ITM028",
+        "ITM029",
+        "ITM030"
+      ]
+    },
+    "class_labels": null,
+    "n_train": 13720,
+    "n_test": 3442,
+    "onnx_file": "demanda_consumo.onnx",
+    "pickle_file": "demanda_consumo.pkl",
+    "trained_at": "2026-07-06T19:00:10.522701+00:00"
+  },
+  {
+    "name": "duracion_estadia",
+    "task": "regression",
+    "description": "Dias de hospedaje estimados del paciente al momento del ingreso",
+    "split": "stratified",
+    "selection_metric": "mae",
+    "selected_algorithm": "random_forest",
+    "metrics": {
+      "mae": 27.29496166666667,
+      "rmse": 37.07278886423602,
+      "r2": -0.014056602341204538
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "mae": 38.813,
+        "rmse": 52.19996168580969,
+        "r2": -1.0104443209474474
+      },
+      {
+        "algoritmo": "random_forest",
+        "mae": 27.29496166666667,
+        "rmse": 37.07278886423602,
+        "r2": -0.014056602341204538
+      },
+      {
+        "algoritmo": "xgboost",
+        "mae": 27.968165305137635,
+        "rmse": 38.17325383091222,
+        "r2": -0.0751524320903818
+      }
+    ],
+    "numeric_features": [
+      "edad",
+      "num_controles_mes",
+      "num_quimios_mes",
+      "hemoglobina_g_dl",
+      "neutrofilos",
+      "plaquetas",
+      "temperatura_c",
+      "peso_kg",
+      "imc",
+      "distancia_origen_km",
+      "ingreso_familiar_mensual",
+      "acompanante_presente",
+      "requiere_apoyo_psicosocial"
+    ],
+    "categorical_features": [
+      "sexo",
+      "region_origen",
+      "diagnostico_general",
+      "estado_tratamiento",
+      "seguro_salud",
+      "alfabetizacion_digital"
+    ],
+    "categorical_values": {
+      "sexo": [
+        "F",
+        "M"
+      ],
+      "region_origen": [
+        "Arequipa",
+        "Ayacucho",
+        "Cajamarca",
+        "Cusco",
+        "Huánuco",
+        "Junín",
+        "La Libertad",
+        "Lima",
+        "Loreto",
+        "Piura",
+        "Puno",
+        "San Martín"
+      ],
+      "diagnostico_general": [
+        "Leucemia linfoblástica aguda",
+        "Leucemia mieloide",
+        "Linfoma",
+        "Neuroblastoma",
+        "Sarcoma",
+        "Tumor sólido"
+      ],
+      "estado_tratamiento": [
+        "En tratamiento",
+        "Inicio",
+        "Recaída",
+        "Seguimiento"
+      ],
+      "seguro_salud": [
+        "EsSalud",
+        "Ninguno",
+        "Privado",
+        "SIS"
+      ],
+      "alfabetizacion_digital": [
+        "Alta",
+        "Baja",
+        "Media",
+        "desconocido"
+      ]
+    },
+    "class_labels": null,
+    "n_train": 8000,
+    "n_test": 2000,
+    "onnx_file": "duracion_estadia.onnx",
+    "pickle_file": "duracion_estadia.pkl",
+    "trained_at": "2026-07-06T19:00:41.306443+00:00"
+  },
+  {
+    "name": "proyeccion_donaciones",
+    "task": "regression",
+    "description": "Valor mensual proyectado de donaciones (S/) por categoria",
+    "split": "temporal",
+    "selection_metric": "mae",
+    "selected_algorithm": "random_forest",
+    "metrics": {
+      "mae": 4623.75029333333,
+      "rmse": 6110.721150071089,
+      "r2": 0.5473593879593217
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "mae": 6622.4113333333335,
+        "rmse": 8328.90147751911,
+        "r2": 0.15910061483809657
+      },
+      {
+        "algoritmo": "random_forest",
+        "mae": 4623.75029333333,
+        "rmse": 6110.721150071089,
+        "r2": 0.5473593879593217
+      },
+      {
+        "algoritmo": "xgboost",
+        "mae": 5783.265800781249,
+        "rmse": 7434.673552609398,
+        "r2": 0.32997286215587784
+      }
+    ],
+    "numeric_features": [
+      "valor_lag_1",
+      "valor_lag_2",
+      "valor_lag_3",
+      "donaciones_lag_1",
+      "mes"
+    ],
+    "categorical_features": [
+      "categoria"
+    ],
+    "categorical_values": {
+      "categoria": [
+        "alimentos",
+        "higiene",
+        "insumos_medicos",
+        "medicamentos_soporte"
+      ]
+    },
+    "class_labels": null,
+    "n_train": 48,
+    "n_test": 15,
+    "onnx_file": "proyeccion_donaciones.onnx",
+    "pickle_file": "proyeccion_donaciones.pkl",
+    "trained_at": "2026-07-06T19:00:42.202077+00:00"
+  }
+]

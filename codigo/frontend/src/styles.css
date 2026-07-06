@@ -1,0 +1,243 @@
+/* Paleta y cromo de gráficos: instancia de referencia validada (dataviz).
+   Los roles se definen una sola vez y cambian en modo oscuro. */
+:root {
+  --surface-1: #fcfcfb;
+  --page: #f9f9f7;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --gridline: #e1e0d9;
+  --baseline: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1);
+  --series-1: #2a78d6; /* azul: única serie de todas las barras */
+  --critical: #d03b3b;
+  --good: #0ca30c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-1: #1a1a19;
+    --page: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --gridline: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255, 255, 255, 0.1);
+    --series-1: #3987e5;
+    --critical: #d03b3b;
+    --good: #0ca30c;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--page);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+.app-header {
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+}
+
+.app-header p {
+  color: var(--text-secondary);
+  max-width: 62ch;
+}
+
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.card .subtitle {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.status {
+  color: var(--text-muted);
+  padding: 12px 0;
+}
+
+.status.error {
+  color: var(--critical);
+}
+
+/* Tabla de modelos */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--baseline);
+  padding: 6px 10px;
+}
+
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--gridline);
+}
+
+td.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+th.num {
+  text-align: right;
+}
+
+/* Barras horizontales: marcas delgadas, extremo redondeado 4px,
+   base anclada, etiqueta directa fuera de la barra */
+.hbar-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 64px;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.hbar-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hbar-track {
+  height: 14px;
+  border-left: 2px solid var(--baseline);
+  display: flex;
+  align-items: center;
+}
+
+.hbar-fill {
+  height: 12px;
+  background: var(--series-1);
+  border-radius: 0 4px 4px 0;
+  min-width: 2px;
+  transition: width 0.25s ease;
+}
+
+.hbar-value {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+/* Formulario de prediccion */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px 16px;
+  margin: 12px 0 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 3px;
+}
+
+.field input,
+.field select,
+.model-picker select {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--baseline);
+  border-radius: 6px;
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.model-picker {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.model-picker label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  background: var(--series-1);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.result {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--gridline);
+}
+
+.result-headline {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.result-caption {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  margin-left: 8px;
+  vertical-align: middle;
+}
