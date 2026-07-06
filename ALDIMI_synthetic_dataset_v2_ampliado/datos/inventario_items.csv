@@ -1,0 +1,31 @@
+﻿item_id,nombre_item,categoria,unidad_medida,consumo_base_por_familia,stock_seguridad_7d,stock_maximo_referencial,es_critico
+ITM001,Arroz,alimentos,kg,0.28,12,240,0
+ITM002,Avena,alimentos,kg,0.12,8,140,0
+ITM003,Leche evaporada,alimentos,lata,0.35,18,360,0
+ITM004,Menestras,alimentos,kg,0.18,10,180,0
+ITM005,Aceite vegetal,alimentos,litro,0.06,4,90,0
+ITM006,Fideos,alimentos,kg,0.16,10,180,0
+ITM007,Conservas de atún,alimentos,lata,0.2,15,250,0
+ITM008,Galletas nutritivas,alimentos,paquete,0.24,15,280,0
+ITM009,Suplemento nutricional,alimentos,unidad,0.1,10,190,0
+ITM010,Frutas,alimentos,kg,0.22,12,250,0
+ITM011,Agua embotellada,alimentos,litro,0.5,35,750,0
+ITM012,Ensure pediátrico,alimentos,unidad,0.07,8,160,0
+ITM013,Papel higiénico,higiene,rollo,0.45,28,520,0
+ITM014,Jabón líquido,higiene,litro,0.08,8,160,0
+ITM015,Pañales,higiene,unidad,0.55,25,500,0
+ITM016,Toallas húmedas,higiene,paquete,0.18,12,220,0
+ITM017,Detergente,higiene,kg,0.1,8,170,0
+ITM018,Alcohol en gel,higiene,unidad,0.07,8,150,0
+ITM019,Mascarillas,insumos_medicos,unidad,0.8,60,1200,1
+ITM020,Guantes descartables,insumos_medicos,par,0.65,55,1100,1
+ITM021,Gasas estériles,insumos_medicos,paquete,0.14,14,260,1
+ITM022,Termómetros digitales,insumos_medicos,unidad,0.01,2,30,1
+ITM023,Baja lenguas,insumos_medicos,unidad,0.35,30,700,1
+ITM024,Antiséptico,insumos_medicos,litro,0.04,4,90,1
+ITM025,Vendas,insumos_medicos,unidad,0.12,10,220,1
+ITM026,Clorhexidina,insumos_medicos,frasco,0.05,5,100,1
+ITM027,Jeringas descartables,insumos_medicos,unidad,0.25,20,450,1
+ITM028,Algodón,insumos_medicos,paquete,0.1,9,180,1
+ITM029,Suero oral,medicamentos_soporte,sobre,0.22,20,400,1
+ITM030,Paracetamol pediátrico,medicamentos_soporte,frasco,0.08,8,150,1
