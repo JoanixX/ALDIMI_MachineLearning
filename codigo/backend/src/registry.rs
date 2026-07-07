@@ -2,6 +2,7 @@
 //! `python -m aldimi_models.train` con el esquema de entrada y las metricas
 //! reales de cada modelo.
 
+use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
 
@@ -19,6 +20,8 @@ pub struct ModelEntry {
     pub metrics: serde_json::Map<String, serde_json::Value>,
     pub numeric_features: Vec<String>,
     pub categorical_features: Vec<String>,
+    #[serde(default)]
+    pub categorical_values: HashMap<String, Vec<String>>,
     pub class_labels: Option<Vec<String>>,
     pub onnx_file: Option<String>,
     pub trained_at: String,
