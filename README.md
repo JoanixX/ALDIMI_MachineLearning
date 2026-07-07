@@ -82,7 +82,8 @@ Alineado al Anexo 10 del curso:
    ```
 
 ### Paso 3: Correr el Backend de Rust
-1. Instala el SDK o binario de **ONNX Runtime** (requerido por la crate `ort`). El cargador se encargará de buscarlo.
+1. No necesitas instalar ONNX Runtime a mano: la crate `ort` descarga sus binarios
+   automáticamente durante `cargo build`.
 2. Ve a la carpeta del backend:
    ```bash
    cd ../backend

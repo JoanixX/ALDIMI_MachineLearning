@@ -16,51 +16,54 @@ Servicio de alto rendimiento construido en **Rust** usando **Axum** para exponer
 
 El body debe ser un objeto JSON (caso individual) o una lista de objetos JSON (lote) que provea las variables declaradas por el modelo en `/models`.
 
-**Ejemplo de llamada a `/predict/prioridad_atencion`**:
+**Ejemplo de llamada a `/predict/prioridad_atencion`** (ejecutado realmente contra el servicio):
 ```bash
 curl -X POST http://localhost:8000/predict/prioridad_atencion \
   -H "Content-Type: application/json" \
   -d '{
-    "edad": 12,
+    "edad": 8,
     "sexo": "F",
-    "region_origen": "Arequipa",
+    "region_origen": "Loreto",
     "diagnostico_general": "Leucemia linfoblástica aguda",
-    "estado_tratamiento": "Inducción",
-    "dias_hospedaje": 5,
-    "num_controles_mes": 2,
-    "num_quimios_mes": 1,
-    "hemoglobina_g_dl": 12.1,
-    "neutrofilos": 1200,
+    "estado_tratamiento": "En tratamiento",
+    "dias_hospedaje": 30,
+    "num_controles_mes": 4,
+    "num_quimios_mes": 2,
+    "hemoglobina_g_dl": 9.1,
+    "neutrofilos": 800,
     "plaquetas": 150000,
-    "temperatura_c": 36.8,
-    "peso_kg": 40.0,
-    "imc": 18.0,
-    "distancia_origen_km": 200,
-    "ingreso_familiar_mensual": 800,
+    "temperatura_c": 38.2,
+    "peso_kg": 25.0,
+    "imc": 15.5,
+    "distancia_origen_km": 400,
+    "ingreso_familiar_mensual": 900,
     "acompanante_presente": 1,
     "seguro_salud": "SIS",
-    "alfabetizacion_digital": "Media",
+    "alfabetizacion_digital": "Baja",
     "requiere_apoyo_psicosocial": 1
   }'
 ```
 
-**Respuesta**:
+**Respuesta real del servicio**:
 ```json
 {
   "model": "prioridad_atencion",
   "predictions": [
     {
-      "prediccion": "Bajo",
-      "clase_indice": 0,
+      "clase_indice": 2,
+      "prediccion": "Alto",
       "probabilidades": {
-        "Alto": 0.052,
-        "Bajo": 0.812,
-        "Medio": 0.136
+        "Alto": 0.6346927881240845,
+        "Bajo": 0.0003548664681147784,
+        "Medio": 0.3649523854255676
       }
     }
   ]
 }
 ```
+
+Un error de esquema responde `422` con detalle, por ejemplo:
+`{"error":"entrada invalida: 'edad' debe ser numerico, se recibio: \"mal\""}`.
 
 ---
 
@@ -76,7 +79,7 @@ Para mantener la interoperabilidad con el curso hermano de Inteligencia Artifici
        fecha_captura TIMESTAMP NOT NULL,
        paciente_id VARCHAR(50) NOT NULL,
        tipo_documento VARCHAR(50) NOT NULL,
-       calidad_imagen FLOAT NOT NULL,
+       calidad_imagen VARCHAR(20) NOT NULL, -- 'Alta' | 'Media' | 'Baja' segun el CSV de ejemplo
        confianza_ocr FLOAT NOT NULL,
        campos_extraidos JSONB,
        requiere_revision_manual BOOLEAN NOT NULL,

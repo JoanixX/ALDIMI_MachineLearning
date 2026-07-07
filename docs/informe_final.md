@@ -46,7 +46,7 @@ A continuación se detallan las métricas reales y definitivas generadas tras el
   - *Decision Tree*: MAE = `6.63` unidades
   - *Random Forest*: MAE = `4.39` unidades
   - *XGBoost*: MAE = `4.26` unidades
-- **Seleccionado**: **XGBoost** (MAE = `4.26` unidades, RMSE = `6.11`, R2 = `0.941`).
+- **Seleccionado**: **XGBoost** (MAE = `4.26` unidades, RMSE = `8.79`, R2 = `0.820`).
 
 ### 5. Duración de Hospedaje / Estadía (Regresión)
 - **Criterio**: MAE (Menor es mejor).
@@ -54,7 +54,13 @@ A continuación se detallan las métricas reales y definitivas generadas tras el
   - *Decision Tree*: MAE = `38.81` días
   - *Random Forest*: MAE = `27.30` días
   - *XGBoost*: MAE = `27.97` días
-- **Seleccionado**: **Random Forest** (MAE = `27.30` días, R2 = `0.457`).
+- **Seleccionado**: **Random Forest** (MAE = `27.30` días, RMSE = `37.07`, R2 = `-0.014`).
+- **Limitación honesta**: el R2 cercano a cero indica que las variables clínicas y
+  sociodemográficas disponibles apenas explican la varianza de `dias_hospedaje` en este
+  dataset sintético: el modelo no supera de forma significativa a predecir la media.
+  Se conserva como referencia del frente (e) y se documenta como oportunidad de mejora
+  (se requerirían variables adicionales, p. ej. protocolo de tratamiento o fase clínica
+  detallada, para que este frente sea útil en producción).
 
 ### 6. Proyección Mensual de Donaciones por Categoría (Regresión / Serie Temporal)
 - **Criterio**: MAE (Menor es mejor).
@@ -62,7 +68,7 @@ A continuación se detallan las métricas reales y definitivas generadas tras el
   - *Decision Tree*: MAE = `6622.41` Soles
   - *Random Forest*: MAE = `4623.75` Soles
   - *XGBoost*: MAE = `5783.27` Soles
-- **Seleccionado**: **Random Forest** (MAE = `4623.75` Soles, R2 = `0.589`).
+- **Seleccionado**: **Random Forest** (MAE = `4623.75` Soles, RMSE = `6110.72`, R2 = `0.547`).
 
 ---
 

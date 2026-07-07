@@ -1,5 +1,15 @@
+# Imagen del backend de inferencia para Render (Web Service via Docker).
+#
+# IMPORTANTE: construir con el contexto en la RAIZ del repo, porque la imagen
+# copia tambien los artefactos ONNX de codigo/ia_models/artifacts:
+#
+#   docker build -f codigo/backend/Dockerfile -t aldimi-backend .
+#
+# En Render: "Dockerfile Path" = codigo/backend/Dockerfile y
+# "Docker Build Context Directory" = . (raiz del repo).
+
 # Stage 1: Build the Rust application
-FROM rust:1.80-slim AS builder
+FROM rust:1-slim AS builder
 
 WORKDIR /app
 

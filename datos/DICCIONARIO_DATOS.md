@@ -106,3 +106,19 @@ Este documento detalla exhaustivamente las variables contenidas en los cinco dat
 | `campos_extraidos` | JSON | Estructura JSON con los campos leídos (ej. medicinas, dosis, nombres). |
 | `requiere_revision_manual`| Binario | Bandera para validación humana (0: No, 1: Sí). |
 | `origen_captura` | Texto | Canal de subida (`Móvil`, `Escáner`, `Web`). |
+
+---
+
+## Nota de uso en el modelado (refactorización 2026)
+
+- Estos CSV viven en `/datos` y son leídos únicamente por
+  `codigo/ia_models/aldimi_models/data_loading.py`, que valida el esquema
+  descrito en este diccionario.
+- **Anti-fuga de información**: para los targets `stock_critico_7d` y
+  `stock_critico_14d`, las columnas `stock_fin`, `consumo_estimado_7d`,
+  `consumo_estimado_14d` y `dias_cobertura` derivan del propio target y están
+  **prohibidas como features** (ver `config.STOCK_LEAKAGE_FEATURES` y los tests
+  de `tests/test_no_leakage.py`).
+- `capturas_ia_sinteticas.csv` es el ejemplo del contrato de datos real con el
+  curso hermano de IA (tabla `capturas_ia` en Supabase); su esquema SQL sugerido
+  está en `codigo/backend/README.md`.
