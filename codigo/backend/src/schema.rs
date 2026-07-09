@@ -105,6 +105,7 @@ mod tests {
             metrics: Map::new(),
             numeric_features: vec!["edad".into()],
             categorical_features: vec!["sexo".into()],
+            categorical_values: std::collections::HashMap::new(),
             class_labels: Some(vec!["Bajo".into(), "Alto".into()]),
             onnx_file: Some("test.onnx".into()),
             trained_at: String::new(),

@@ -275,6 +275,54 @@ def _eda_capturas_ia(capturas: pd.DataFrame) -> None:
     )
 
 
+def _eda_senal_por_modelo(max_muestras: int = 6000) -> None:
+    """EDA accionable: cuanta senal aporta cada feature a cada target.
+
+    Calcula mutual information (captura relaciones no lineales, a diferencia
+    de la correlacion de Pearson) entre cada feature y el target de cada uno
+    de los seis frentes, usando exactamente los FeatureSets del modelado.
+    Genera ``senal_<modelo>.csv`` (ranking completo) y un grafico top-15.
+    """
+    from sklearn.feature_selection import mutual_info_classif, mutual_info_regression
+    from sklearn.preprocessing import OrdinalEncoder
+
+    from .models import MODEL_SPECS
+
+    for name, spec in MODEL_SPECS.items():
+        fs = spec.build_features()
+        X, y = fs.X, fs.y
+        if len(X) > max_muestras:
+            idx = X.sample(max_muestras, random_state=42).index
+            X, y = X.loc[idx], y.loc[idx]
+
+        X_enc = X.copy()
+        for col in fs.numeric_features:
+            X_enc[col] = X_enc[col].fillna(X_enc[col].median())
+        if fs.categorical_features:
+            encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
+            X_enc[fs.categorical_features] = encoder.fit_transform(X_enc[fs.categorical_features])
+        columnas = fs.numeric_features + fs.categorical_features
+        X_enc = X_enc[columnas]
+        discretas = [c in fs.categorical_features for c in columnas]
+
+        mi_fn = mutual_info_classif if spec.task == "classification" else mutual_info_regression
+        mi = mi_fn(X_enc, y, discrete_features=discretas, random_state=42)
+        ranking = (
+            pd.DataFrame({"variable": columnas, "mutual_information": mi})
+            .sort_values("mutual_information", ascending=False)
+            .reset_index(drop=True)
+        )
+        save_dataframe(ranking, EDA_OUTPUT_DIR / f"senal_{name}.csv")
+        plots.feature_importance_barh(
+            ranking.rename(columns={"mutual_information": "importancia"}),
+            f"Senal (mutual information) hacia el target - {name}",
+            EDA_OUTPUT_DIR / f"senal_{name}.png",
+            top_n=15,
+        )
+        print(f"  senal {name}: top = {ranking.iloc[0]['variable']} "
+              f"({ranking.iloc[0]['mutual_information']:.3f})")
+
+
 def main() -> None:
     datasets = load_all()
     print(f"Datasets cargados: {list(datasets)}")
@@ -286,6 +334,8 @@ def main() -> None:
     _eda_consumo(datasets["consumo"])
     _eda_donaciones(datasets["donaciones"])
     _eda_capturas_ia(datasets["capturas_ia"])
+    print("Analisis de senal por modelo (mutual information)...")
+    _eda_senal_por_modelo()
     print(f"EDA completo en: {EDA_OUTPUT_DIR}")
 
 

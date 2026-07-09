@@ -15,9 +15,23 @@ Este subproyecto contiene el código puramente matemático, estadístico y de en
 
 ## 🛠️ Comandos de Uso CLI
 
-1. **Entrenar todos los modelos** (comparando clasificadores y regresores):
+0.a **Descargar los datasets reales evaluados** (documentados como experimento):
    ```bash
-   python -m aldimi_models.train
+   python -m aldimi_models.real_data
+   ```
+
+0.b **Regenerar el dataset sintético v3** (reproducible; escribe en `/datos`):
+   ```bash
+   python -m aldimi_models.datagen --seed 42
+   ```
+   *El generador (`datagen.py`) documenta la estructura causal de cada target.*
+
+1. **Entrenar todos los modelos** (comparando clasificadores y regresores, con
+   tuning de hiperparámetros vía RandomizedSearchCV + validación cruzada):
+   ```bash
+   python -m aldimi_models.train              # tuning completo (~10-20 min)
+   python -m aldimi_models.train --sin-tuning # rápido, hiperparámetros por defecto
+   python -m aldimi_models.train --n-iter 30  # búsqueda más exhaustiva
    ```
    *Esto regenerará los archivos `.onnx` en `artifacts/` y el archivo `artifacts/model_registry.json`.*
 
@@ -43,7 +57,7 @@ Este subproyecto contiene el código puramente matemático, estadístico y de en
 
 ## 🧪 Pruebas Automatizadas
 
-El proyecto incluye 20 tests unitarios implementados en `tests/` que validan:
+El proyecto incluye 26 tests unitarios implementados en `tests/` que validan:
 1. La carga e integridad de los datasets en formato CSV.
 2. Que no existan fugas de información en los modelos de stock crítico.
 3. La lógica de cálculo de métricas de clasificación y regresión.

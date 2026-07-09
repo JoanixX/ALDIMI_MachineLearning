@@ -71,7 +71,7 @@ def evaluate_model(name: str, registry_entry: dict[str, object]) -> dict[str, ob
     """Evalua un modelo sobre su test set y escribe sus reportes."""
     spec = MODEL_SPECS[name]
     fs = spec.build_features()
-    _, X_test, _, y_test = split_features(spec, fs)
+    _, X_test, _, y_test, _ = split_features(spec, fs)
     pipeline = load_pipeline(name)
     y_pred = pipeline.predict(X_test)
 

@@ -10,6 +10,8 @@ codigo/ia_models/outputs/
 
 # Artefactos intermedios de modelos (los .onnx y model_registry.json SÍ se versionan)
 codigo/ia_models/artifacts/*.pkl
+datos/*.csv
+datos/reales/*.csv
 
 # Rust
 codigo/backend/target/
@@ -21,3 +23,4 @@ codigo/frontend/dist/
 
 # Documentación irrelevante
 ai-p-document/
+informe_final.md

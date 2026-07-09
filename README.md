@@ -39,12 +39,17 @@ Alineado al Anexo 10 del curso:
 
 | Frente | Target | Tipo de Tarea | Algoritmo Ganador | Métrica de Selección (Test) |
 |---|---|---|---|---|
-| **(a) Prioridad de Atención** | `nivel_prioridad_atencion` | Clasificación Multiclase | **XGBoost** | F1-macro = `0.7659` |
-| **(b) Stock Crítico a 7 días** | `stock_critico_7d` | Clasificación Binaria | **Random Forest** | F1-macro = `0.8996` |
-| **(c) Stock Crítico a 14 días** | `stock_critico_14d` | Clasificación Binaria | **Random Forest** | F1-macro = `0.8194` |
-| **(d) Demanda de Consumo** | `consumo_real` | Regresión (Serie Temporal) | **XGBoost** | MAE = `4.26` unidades |
-| **(e) Duración de Estadía** | `dias_hospedaje` | Regresión | **Random Forest** | MAE = `27.30` días |
-| **(f) Proyección de Donaciones** | `valor_total_soles` | Regresión (Serie Temporal) | **Random Forest** | MAE = `4623.75` soles |
+| **(a) Prioridad de Atención** | `nivel_prioridad_atencion` | Clasificación Multiclase | **XGBoost** | F1-macro = `0.855` |
+| **(b) Stock Crítico a 7 días** | `stock_critico_7d` (forward-looking) | Clasificación Binaria | **XGBoost** | F1-macro = `0.882` |
+| **(c) Stock Crítico a 14 días** | `stock_critico_14d` (forward-looking) | Clasificación Binaria | **XGBoost** | F1-macro = `0.878` |
+| **(d) Demanda de Consumo** | `consumo_real` | Regresión (Serie Temporal) | **XGBoost** | MAE = `1.19` unid. (R2 = `0.944`) |
+| **(e) Duración de Estadía** | `dias_hospedaje` | Regresión | **XGBoost** | MAE = `6.10` días (R2 = `0.948`) |
+| **(f) Proyección de Donaciones** | `valor_total_soles` | Regresión (Serie Temporal) | **XGBoost** | MAE = `S/ 2741.87` (R2 = `0.900`) |
+
+Criterio de aceptación del curso: métrica principal en **[0.85, 0.95]** — cumplido en los 6 frentes,
+con CV ≈ test (sin sobreajuste). Se evaluaron datasets **reales** (triaje de urgencias de Mendeley y
+NY SPARCS pediátrico-oncológico): quedaron fuera del rango y se documentan como experimento en
+`docs/informe_final.md` y `datos/reales/README.md`.
 
 *Nota: Para prevenir fuga de información, en las variables explicativas de los frentes de stock crítico (b/c) se han excluido estrictamente las columnas `stock_fin`, `consumo_estimado_7d`, `consumo_estimado_14d` y `dias_cobertura`.*
 

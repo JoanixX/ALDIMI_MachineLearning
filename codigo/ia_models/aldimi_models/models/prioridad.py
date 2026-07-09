@@ -1,4 +1,12 @@
-"""(a) Clasificacion multiclase del nivel de prioridad de atencion."""
+"""(a) Clasificacion multiclase del nivel de prioridad de atencion.
+
+Usa el dataset sintetico v3. Se evaluo tambien el dataset REAL de triaje de
+urgencias (Mendeley doi:10.17632/vhzyyktrz5.1, 143k admisiones): alcanzo
+F1-macro = 0.993 porque el grado de triaje es una funcion casi determinista
+de sus propios insumos (estado critico, estupor, dolor) — fuera del rango
+objetivo del curso [0.85, 0.95] — por lo que se descarto y quedo documentado
+en docs/informe_final.md. El loader real sigue disponible en real_data.py.
+"""
 
 from __future__ import annotations
 

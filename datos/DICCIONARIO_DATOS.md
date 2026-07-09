@@ -1,11 +1,11 @@
-# Diccionario de Datos - ALDIMI Predict (v2_ampliado)
+# Diccionario de Datos - ALDIMI Predict (v3)
 
 Este documento detalla exhaustivamente las variables contenidas en los cinco datasets del proyecto, sus tipos de datos y su relevancia en el flujo de modelado predictivo.
 
 ---
 
 ## 1. Pacientes Riesgo Sintético (`pacientes_riesgo_sintetico.csv`)
-*Contiene información sociodemográfica y clínica de 10,000 registros para determinar la prioridad de atención y estimar la estadía.*
+*Contiene información sociodemográfica y clínica de 12,000 registros para determinar la prioridad de atención y estimar la estadía.*
 
 | Variable | Tipo de Dato | Descripción | Rol en ML |
 |---|---|---|---|
@@ -106,6 +106,25 @@ Este documento detalla exhaustivamente las variables contenidas en los cinco dat
 | `campos_extraidos` | JSON | Estructura JSON con los campos leídos (ej. medicinas, dosis, nombres). |
 | `requiere_revision_manual`| Binario | Bandera para validación humana (0: No, 1: Sí). |
 | `origen_captura` | Texto | Canal de subida (`Móvil`, `Escáner`, `Web`). |
+
+---
+
+## Generacion del dataset v3
+
+Los CSV se regeneran con `python -m aldimi_models.datagen --seed 42`
+(`codigo/ia_models/aldimi_models/datagen.py`), que documenta la estructura
+causal de cada target:
+
+| Target | Depende de |
+|---|---|
+| `nivel_prioridad_atencion` | severidad clinica (labs, neutropenia, fiebre), estado de tratamiento, vulnerabilidad social + ruido |
+| `dias_hospedaje` | diagnostico x fase de tratamiento, quimios/mes, distancia de origen, severidad + ruido gamma |
+| `consumo_real` | consumo base del item x ocupacion x dia de semana x estacionalidad + ruido lognormal |
+| `stock_critico_7d/14d` | target *forward-looking*: el stock realmente caera bajo el minimo operativo (seguridad + ~5 dias de demanda tipica) dentro de los proximos 7/14 dias, segun la trayectoria futura simulada (reposicion con punto de pedido fijo por item y lead time de 5 dias) |
+| `valor_estimado_soles` | estacionalidad mensual (Navidad, Dia del Nino), tendencia y mezcla de tipos de donante |
+
+Volumenes v3: 12,000 pacientes; 21,900 registros de inventario (30 items x 730 dias);
+~4,300 donaciones en 36 meses; 6,000 capturas OCR. Tasas de alerta: ~12% (7d) y ~22% (14d).
 
 ---
 
