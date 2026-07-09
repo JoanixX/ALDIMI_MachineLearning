@@ -1,6 +1,26 @@
-ALDIMI_synthetic_dataset_v2.zip
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
 
-# Outputs
-outputs_baseline/
-outputs_baseline_stock/
-outputs_eda_v2/
+# Salidas generadas (regenerables con `python -m aldimi_models.eda` / `evaluate`)
+codigo/ia_models/outputs/
+
+# Artefactos intermedios de modelos (los .onnx y model_registry.json SÍ se versionan)
+codigo/ia_models/artifacts/*.pkl
+datos/*.csv
+datos/reales/*.csv
+
+# Rust
+codigo/backend/target/
+.xwin-cache/
+
+# Node
+codigo/frontend/node_modules/
+codigo/frontend/dist/
+
+# Documentación irrelevante
+ai-p-document/
+informe_final.md

@@ -1,0 +1,773 @@
+[
+  {
+    "name": "prioridad_atencion",
+    "task": "classification",
+    "description": "Nivel de prioridad de atencion del paciente (Bajo/Medio/Alto)",
+    "split": "stratified",
+    "selection_metric": "f1_macro",
+    "selected_algorithm": "xgboost",
+    "best_hyperparameters": {
+      "colsample_bytree": 0.9124217733388136,
+      "learning_rate": 0.033499364030286416,
+      "max_depth": 4,
+      "min_child_weight": 8,
+      "n_estimators": 400,
+      "scale_pos_weight": 1.0,
+      "subsample": 0.7637017332034828
+    },
+    "metrics": {
+      "cv_score": 0.8565450735979699,
+      "accuracy": 0.8558333333333333,
+      "precision_macro": 0.8639103844430789,
+      "recall_macro": 0.8475418871252204,
+      "f1_macro": 0.8545898271553239,
+      "precision_weighted": 0.8589992208607028,
+      "recall_weighted": 0.8558333333333333,
+      "f1_weighted": 0.8566171635252208
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "cv_score": 0.8212693943464755,
+        "accuracy": 0.8191666666666667,
+        "precision_macro": 0.8256675181289967,
+        "recall_macro": 0.811496913580247,
+        "f1_macro": 0.8169608795750305,
+        "precision_weighted": 0.825767001123443,
+        "recall_weighted": 0.8191666666666667,
+        "f1_weighted": 0.8210277740984416,
+        "mejores_hiperparametros": "{'class_weight': None, 'max_depth': 16, 'min_samples_leaf': 39}"
+      },
+      {
+        "algoritmo": "random_forest",
+        "cv_score": 0.8533191704237258,
+        "accuracy": 0.84,
+        "precision_macro": 0.850723107931652,
+        "recall_macro": 0.8334435626102293,
+        "f1_macro": 0.8404810421980068,
+        "precision_weighted": 0.8454101088483926,
+        "recall_weighted": 0.84,
+        "f1_weighted": 0.8414483362185484,
+        "mejores_hiperparametros": "{'class_weight': 'balanced', 'max_depth': 26, 'max_features': 'sqrt', 'min_samples_leaf': 2, 'n_estimators': 300}"
+      },
+      {
+        "algoritmo": "xgboost",
+        "cv_score": 0.8565450735979699,
+        "accuracy": 0.8558333333333333,
+        "precision_macro": 0.8639103844430789,
+        "recall_macro": 0.8475418871252204,
+        "f1_macro": 0.8545898271553239,
+        "precision_weighted": 0.8589992208607028,
+        "recall_weighted": 0.8558333333333333,
+        "f1_weighted": 0.8566171635252208,
+        "mejores_hiperparametros": "{'colsample_bytree': 0.9124217733388136, 'learning_rate': 0.033499364030286416, 'max_depth': 4, 'min_child_weight': 8, 'n_estimators': 400, 'scale_pos_weight': 1.0, 'subsample': 0.7637017332034828}"
+      }
+    ],
+    "numeric_features": [
+      "edad",
+      "num_controles_mes",
+      "num_quimios_mes",
+      "hemoglobina_g_dl",
+      "neutrofilos",
+      "plaquetas",
+      "temperatura_c",
+      "peso_kg",
+      "imc",
+      "distancia_origen_km",
+      "ingreso_familiar_mensual",
+      "acompanante_presente",
+      "requiere_apoyo_psicosocial",
+      "dias_hospedaje",
+      "neutropenia",
+      "neutropenia_severa",
+      "fiebre",
+      "neutropenia_febril",
+      "anemia_severa",
+      "plaquetopenia",
+      "carga_clinica",
+      "vulnerabilidad_social"
+    ],
+    "categorical_features": [
+      "sexo",
+      "region_origen",
+      "diagnostico_general",
+      "estado_tratamiento",
+      "seguro_salud",
+      "alfabetizacion_digital"
+    ],
+    "categorical_values": {
+      "sexo": [
+        "F",
+        "M"
+      ],
+      "region_origen": [
+        "Arequipa",
+        "Ayacucho",
+        "Cajamarca",
+        "Cusco",
+        "Huánuco",
+        "Junín",
+        "La Libertad",
+        "Lima",
+        "Loreto",
+        "Piura",
+        "Puno",
+        "San Martín"
+      ],
+      "diagnostico_general": [
+        "Leucemia linfoblástica aguda",
+        "Leucemia mieloide",
+        "Linfoma",
+        "Neuroblastoma",
+        "Sarcoma",
+        "Tumor sólido"
+      ],
+      "estado_tratamiento": [
+        "En tratamiento",
+        "Inicio",
+        "Recaída",
+        "Seguimiento"
+      ],
+      "seguro_salud": [
+        "EsSalud",
+        "Ninguno",
+        "Privado",
+        "SIS"
+      ],
+      "alfabetizacion_digital": [
+        "Alta",
+        "Baja",
+        "Media",
+        "desconocido"
+      ]
+    },
+    "class_labels": [
+      "Bajo",
+      "Medio",
+      "Alto"
+    ],
+    "n_train": 9600,
+    "n_test": 2400,
+    "onnx_file": "prioridad_atencion.onnx",
+    "pickle_file": "prioridad_atencion.pkl",
+    "trained_at": "2026-07-07T03:35:42.907686+00:00"
+  },
+  {
+    "name": "stock_critico_7d",
+    "task": "classification",
+    "description": "Alerta de stock critico a 7 dias por item de inventario",
+    "split": "temporal",
+    "selection_metric": "f1_macro",
+    "selected_algorithm": "xgboost",
+    "best_hyperparameters": {
+      "colsample_bytree": 0.9896896099223678,
+      "learning_rate": 0.1674275491797984,
+      "max_depth": 3,
+      "min_child_weight": 5,
+      "n_estimators": 400,
+      "scale_pos_weight": 8.285330467490597,
+      "subsample": 0.7723076398078035
+    },
+    "metrics": {
+      "cv_score": 0.8009835860322742,
+      "accuracy": 0.9314814814814815,
+      "precision_macro": 0.8493658388395231,
+      "recall_macro": 0.927942995097575,
+      "f1_macro": 0.8815998245923327,
+      "precision_weighted": 0.9436887111156117,
+      "recall_weighted": 0.9314814814814815,
+      "f1_weighted": 0.9349326374859375
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "cv_score": 0.7570496370440787,
+        "accuracy": 0.9259259259259259,
+        "precision_macro": 0.861079725486113,
+        "recall_macro": 0.8484304343134186,
+        "f1_macro": 0.854571834822892,
+        "precision_weighted": 0.9247368665858378,
+        "recall_weighted": 0.9259259259259259,
+        "f1_weighted": 0.9252656765700485,
+        "mejores_hiperparametros": "{'class_weight': None, 'max_depth': 24, 'min_samples_leaf': 2}"
+      },
+      {
+        "algoritmo": "random_forest",
+        "cv_score": 0.7970566076865865,
+        "accuracy": 0.9143518518518519,
+        "precision_macro": 0.8206949115594925,
+        "recall_macro": 0.920310063801399,
+        "f1_macro": 0.8579593421057776,
+        "precision_weighted": 0.9354878416480017,
+        "recall_weighted": 0.9143518518518519,
+        "f1_weighted": 0.9200698285931878,
+        "mejores_hiperparametros": "{'class_weight': 'balanced', 'max_depth': 12, 'max_features': 0.5, 'min_samples_leaf': 9, 'n_estimators': 200}"
+      },
+      {
+        "algoritmo": "xgboost",
+        "cv_score": 0.8009835860322742,
+        "accuracy": 0.9314814814814815,
+        "precision_macro": 0.8493658388395231,
+        "recall_macro": 0.927942995097575,
+        "f1_macro": 0.8815998245923327,
+        "precision_weighted": 0.9436887111156117,
+        "recall_weighted": 0.9314814814814815,
+        "f1_weighted": 0.9349326374859375,
+        "mejores_hiperparametros": "{'colsample_bytree': 0.9896896099223678, 'learning_rate': 0.1674275491797984, 'max_depth': 3, 'min_child_weight': 5, 'n_estimators': 400, 'scale_pos_weight': 8.285330467490597, 'subsample': 0.7723076398078035}"
+      }
+    ],
+    "numeric_features": [
+      "ocupacion_familias",
+      "stock_inicio",
+      "ingreso_stock",
+      "consumo_real",
+      "consumo_roll7",
+      "consumo_roll14",
+      "consumo_std7",
+      "ingreso_roll7",
+      "cobertura_bruta",
+      "ratio_stock_seguridad",
+      "consumo_base_por_familia",
+      "stock_seguridad_7d",
+      "es_critico",
+      "dia_semana",
+      "mes",
+      "dias_sin_ingreso"
+    ],
+    "categorical_features": [
+      "categoria",
+      "unidad_medida",
+      "item_id"
+    ],
+    "categorical_values": {
+      "categoria": [
+        "alimentos",
+        "higiene",
+        "insumos_medicos",
+        "medicamentos_soporte"
+      ],
+      "unidad_medida": [
+        "frasco",
+        "kg",
+        "lata",
+        "litro",
+        "paquete",
+        "par",
+        "rollo",
+        "sobre",
+        "unidad"
+      ],
+      "item_id": [
+        "ITM001",
+        "ITM002",
+        "ITM003",
+        "ITM004",
+        "ITM005",
+        "ITM006",
+        "ITM007",
+        "ITM008",
+        "ITM009",
+        "ITM010",
+        "ITM011",
+        "ITM012",
+        "ITM013",
+        "ITM014",
+        "ITM015",
+        "ITM016",
+        "ITM017",
+        "ITM018",
+        "ITM019",
+        "ITM020",
+        "ITM021",
+        "ITM022",
+        "ITM023",
+        "ITM024",
+        "ITM025",
+        "ITM026",
+        "ITM027",
+        "ITM028",
+        "ITM029",
+        "ITM030"
+      ]
+    },
+    "class_labels": [
+      "normal",
+      "critico"
+    ],
+    "n_train": 17280,
+    "n_test": 4320,
+    "onnx_file": "stock_critico_7d.onnx",
+    "pickle_file": "stock_critico_7d.pkl",
+    "trained_at": "2026-07-07T03:28:17.485397+00:00"
+  },
+  {
+    "name": "stock_critico_14d",
+    "task": "classification",
+    "description": "Alerta de stock critico a 14 dias por item de inventario",
+    "split": "temporal",
+    "selection_metric": "f1_macro",
+    "selected_algorithm": "xgboost",
+    "best_hyperparameters": {
+      "colsample_bytree": 0.9896896099223678,
+      "learning_rate": 0.1674275491797984,
+      "max_depth": 3,
+      "min_child_weight": 5,
+      "n_estimators": 400,
+      "scale_pos_weight": 3.962275101567034,
+      "subsample": 0.7723076398078035
+    },
+    "metrics": {
+      "cv_score": 0.7910273796820829,
+      "accuracy": 0.8981351981351982,
+      "precision_macro": 0.8651898112644614,
+      "recall_macro": 0.8965810588151013,
+      "f1_macro": 0.878325431135613,
+      "precision_weighted": 0.9059246113100623,
+      "recall_weighted": 0.8981351981351982,
+      "f1_weighted": 0.9002294715961595
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "cv_score": 0.777338878983469,
+        "accuracy": 0.8487179487179487,
+        "precision_macro": 0.8094021416673125,
+        "recall_macro": 0.8499444802636292,
+        "f1_macro": 0.823738159487841,
+        "precision_weighted": 0.8665833382439977,
+        "recall_weighted": 0.8487179487179487,
+        "f1_weighted": 0.8533426898819129,
+        "mejores_hiperparametros": "{'class_weight': 'balanced', 'max_depth': 12, 'min_samples_leaf': 30}"
+      },
+      {
+        "algoritmo": "random_forest",
+        "cv_score": 0.8013614155996739,
+        "accuracy": 0.8843822843822844,
+        "precision_macro": 0.8487498125656021,
+        "recall_macro": 0.893822981588939,
+        "f1_macro": 0.8651533299112151,
+        "precision_weighted": 0.9001831089887771,
+        "recall_weighted": 0.8843822843822844,
+        "f1_weighted": 0.8878719835270341,
+        "mejores_hiperparametros": "{'class_weight': 'balanced', 'max_depth': 12, 'max_features': 0.5, 'min_samples_leaf': 9, 'n_estimators': 200}"
+      },
+      {
+        "algoritmo": "xgboost",
+        "cv_score": 0.7910273796820829,
+        "accuracy": 0.8981351981351982,
+        "precision_macro": 0.8651898112644614,
+        "recall_macro": 0.8965810588151013,
+        "f1_macro": 0.878325431135613,
+        "precision_weighted": 0.9059246113100623,
+        "recall_weighted": 0.8981351981351982,
+        "f1_weighted": 0.9002294715961595,
+        "mejores_hiperparametros": "{'colsample_bytree': 0.9896896099223678, 'learning_rate': 0.1674275491797984, 'max_depth': 3, 'min_child_weight': 5, 'n_estimators': 400, 'scale_pos_weight': 3.962275101567034, 'subsample': 0.7723076398078035}"
+      }
+    ],
+    "numeric_features": [
+      "ocupacion_familias",
+      "stock_inicio",
+      "ingreso_stock",
+      "consumo_real",
+      "consumo_roll7",
+      "consumo_roll14",
+      "consumo_std7",
+      "ingreso_roll7",
+      "cobertura_bruta",
+      "ratio_stock_seguridad",
+      "consumo_base_por_familia",
+      "stock_seguridad_7d",
+      "es_critico",
+      "dia_semana",
+      "mes",
+      "dias_sin_ingreso"
+    ],
+    "categorical_features": [
+      "categoria",
+      "unidad_medida",
+      "item_id"
+    ],
+    "categorical_values": {
+      "categoria": [
+        "alimentos",
+        "higiene",
+        "insumos_medicos",
+        "medicamentos_soporte"
+      ],
+      "unidad_medida": [
+        "frasco",
+        "kg",
+        "lata",
+        "litro",
+        "paquete",
+        "par",
+        "rollo",
+        "sobre",
+        "unidad"
+      ],
+      "item_id": [
+        "ITM001",
+        "ITM002",
+        "ITM003",
+        "ITM004",
+        "ITM005",
+        "ITM006",
+        "ITM007",
+        "ITM008",
+        "ITM009",
+        "ITM010",
+        "ITM011",
+        "ITM012",
+        "ITM013",
+        "ITM014",
+        "ITM015",
+        "ITM016",
+        "ITM017",
+        "ITM018",
+        "ITM019",
+        "ITM020",
+        "ITM021",
+        "ITM022",
+        "ITM023",
+        "ITM024",
+        "ITM025",
+        "ITM026",
+        "ITM027",
+        "ITM028",
+        "ITM029",
+        "ITM030"
+      ]
+    },
+    "class_labels": [
+      "normal",
+      "critico"
+    ],
+    "n_train": 17100,
+    "n_test": 4290,
+    "onnx_file": "stock_critico_14d.onnx",
+    "pickle_file": "stock_critico_14d.pkl",
+    "trained_at": "2026-07-07T03:30:15.959855+00:00"
+  },
+  {
+    "name": "demanda_consumo",
+    "task": "regression",
+    "description": "Consumo diario esperado por item (serie con lags de 1/7/14 dias)",
+    "split": "temporal",
+    "selection_metric": "mae",
+    "selected_algorithm": "xgboost",
+    "best_hyperparameters": {
+      "colsample_bytree": 0.9124217733388136,
+      "learning_rate": 0.033499364030286416,
+      "max_depth": 4,
+      "min_child_weight": 8,
+      "n_estimators": 400,
+      "subsample": 0.7637017332034828
+    },
+    "metrics": {
+      "cv_score": -1.393308535377092,
+      "mae": 1.1901776640931214,
+      "rmse": 2.0016898514239516,
+      "r2": 0.9443462445888896
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "cv_score": -1.5315202181844076,
+        "mae": 1.2881053584009636,
+        "rmse": 2.192712482063429,
+        "r2": 0.9332172531496941,
+        "mejores_hiperparametros": "{'max_depth': 16, 'min_samples_leaf': 36}"
+      },
+      {
+        "algoritmo": "random_forest",
+        "cv_score": -1.3975634852137337,
+        "mae": 1.2113439384344675,
+        "rmse": 2.054914122515496,
+        "r2": 0.9413472669009807,
+        "mejores_hiperparametros": "{'max_depth': 12, 'max_features': 0.5, 'min_samples_leaf': 6, 'n_estimators': 300}"
+      },
+      {
+        "algoritmo": "xgboost",
+        "cv_score": -1.393308535377092,
+        "mae": 1.1901776640931214,
+        "rmse": 2.0016898514239516,
+        "r2": 0.9443462445888896,
+        "mejores_hiperparametros": "{'colsample_bytree': 0.9124217733388136, 'learning_rate': 0.033499364030286416, 'max_depth': 4, 'min_child_weight': 8, 'n_estimators': 400, 'subsample': 0.7637017332034828}"
+      }
+    ],
+    "numeric_features": [
+      "consumo_lag_1",
+      "consumo_lag_2",
+      "consumo_lag_3",
+      "consumo_lag_7",
+      "consumo_lag_14",
+      "consumo_roll7",
+      "consumo_roll14",
+      "consumo_std7",
+      "ocupacion_familias",
+      "consumo_base_por_familia",
+      "base_x_ocupacion",
+      "dia_semana",
+      "mes"
+    ],
+    "categorical_features": [
+      "categoria",
+      "item_id"
+    ],
+    "categorical_values": {
+      "categoria": [
+        "alimentos",
+        "higiene",
+        "insumos_medicos",
+        "medicamentos_soporte"
+      ],
+      "item_id": [
+        "ITM001",
+        "ITM002",
+        "ITM003",
+        "ITM004",
+        "ITM005",
+        "ITM006",
+        "ITM007",
+        "ITM008",
+        "ITM009",
+        "ITM010",
+        "ITM011",
+        "ITM012",
+        "ITM013",
+        "ITM014",
+        "ITM015",
+        "ITM016",
+        "ITM017",
+        "ITM018",
+        "ITM019",
+        "ITM020",
+        "ITM021",
+        "ITM022",
+        "ITM023",
+        "ITM024",
+        "ITM025",
+        "ITM026",
+        "ITM027",
+        "ITM028",
+        "ITM029",
+        "ITM030"
+      ]
+    },
+    "class_labels": null,
+    "n_train": 17160,
+    "n_test": 4320,
+    "onnx_file": "demanda_consumo.onnx",
+    "pickle_file": "demanda_consumo.pkl",
+    "trained_at": "2026-07-07T03:32:17.085841+00:00"
+  },
+  {
+    "name": "duracion_estadia",
+    "task": "regression",
+    "description": "Dias de hospedaje estimados del paciente al momento del ingreso",
+    "split": "stratified",
+    "selection_metric": "mae",
+    "selected_algorithm": "xgboost",
+    "best_hyperparameters": {
+      "colsample_bytree": 0.9124217733388136,
+      "learning_rate": 0.033499364030286416,
+      "max_depth": 4,
+      "min_child_weight": 8,
+      "n_estimators": 400,
+      "subsample": 0.7637017332034828
+    },
+    "metrics": {
+      "cv_score": -6.020427917564908,
+      "mae": 6.0955799371004105,
+      "rmse": 7.786823520214244,
+      "r2": 0.9480333685217716
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "cv_score": -8.312635228527347,
+        "mae": 8.01538033959102,
+        "rmse": 10.287506967909147,
+        "r2": 0.9092964704426694,
+        "mejores_hiperparametros": "{'max_depth': 16, 'min_samples_leaf': 21}"
+      },
+      {
+        "algoritmo": "random_forest",
+        "cv_score": -6.516272378756807,
+        "mae": 6.538106256818028,
+        "rmse": 8.38868928505916,
+        "r2": 0.9396896124167371,
+        "mejores_hiperparametros": "{'max_depth': 26, 'max_features': 0.5, 'min_samples_leaf': 2, 'n_estimators': 300}"
+      },
+      {
+        "algoritmo": "xgboost",
+        "cv_score": -6.020427917564908,
+        "mae": 6.0955799371004105,
+        "rmse": 7.786823520214244,
+        "r2": 0.9480333685217716,
+        "mejores_hiperparametros": "{'colsample_bytree': 0.9124217733388136, 'learning_rate': 0.033499364030286416, 'max_depth': 4, 'min_child_weight': 8, 'n_estimators': 400, 'subsample': 0.7637017332034828}"
+      }
+    ],
+    "numeric_features": [
+      "edad",
+      "num_controles_mes",
+      "num_quimios_mes",
+      "hemoglobina_g_dl",
+      "neutrofilos",
+      "plaquetas",
+      "temperatura_c",
+      "peso_kg",
+      "imc",
+      "distancia_origen_km",
+      "ingreso_familiar_mensual",
+      "acompanante_presente",
+      "requiere_apoyo_psicosocial",
+      "neutropenia",
+      "neutropenia_severa",
+      "fiebre",
+      "neutropenia_febril",
+      "anemia_severa",
+      "plaquetopenia",
+      "carga_clinica",
+      "vulnerabilidad_social"
+    ],
+    "categorical_features": [
+      "sexo",
+      "region_origen",
+      "diagnostico_general",
+      "estado_tratamiento",
+      "seguro_salud",
+      "alfabetizacion_digital"
+    ],
+    "categorical_values": {
+      "sexo": [
+        "F",
+        "M"
+      ],
+      "region_origen": [
+        "Arequipa",
+        "Ayacucho",
+        "Cajamarca",
+        "Cusco",
+        "Huánuco",
+        "Junín",
+        "La Libertad",
+        "Lima",
+        "Loreto",
+        "Piura",
+        "Puno",
+        "San Martín"
+      ],
+      "diagnostico_general": [
+        "Leucemia linfoblástica aguda",
+        "Leucemia mieloide",
+        "Linfoma",
+        "Neuroblastoma",
+        "Sarcoma",
+        "Tumor sólido"
+      ],
+      "estado_tratamiento": [
+        "En tratamiento",
+        "Inicio",
+        "Recaída",
+        "Seguimiento"
+      ],
+      "seguro_salud": [
+        "EsSalud",
+        "Ninguno",
+        "Privado",
+        "SIS"
+      ],
+      "alfabetizacion_digital": [
+        "Alta",
+        "Baja",
+        "Media",
+        "desconocido"
+      ]
+    },
+    "class_labels": null,
+    "n_train": 9600,
+    "n_test": 2400,
+    "onnx_file": "duracion_estadia.onnx",
+    "pickle_file": "duracion_estadia.pkl",
+    "trained_at": "2026-07-07T03:37:50.918402+00:00"
+  },
+  {
+    "name": "proyeccion_donaciones",
+    "task": "regression",
+    "description": "Valor mensual proyectado de donaciones (S/) por categoria",
+    "split": "temporal",
+    "selection_metric": "mae",
+    "selected_algorithm": "xgboost",
+    "best_hyperparameters": {
+      "colsample_bytree": 0.8640130838029838,
+      "learning_rate": 0.061425257439339596,
+      "max_depth": 9,
+      "min_child_weight": 2,
+      "n_estimators": 400,
+      "subsample": 0.8349262400109296
+    },
+    "metrics": {
+      "cv_score": -3671.997031611689,
+      "mae": 2741.8726649305554,
+      "rmse": 3644.6447204461942,
+      "r2": 0.9001042358328952
+    },
+    "all_algorithms": [
+      {
+        "algoritmo": "decision_tree",
+        "cv_score": -4268.570725308643,
+        "mae": 3791.648472222221,
+        "rmse": 5564.082040940013,
+        "r2": 0.7671781564367206,
+        "mejores_hiperparametros": "{'max_depth': 16, 'min_samples_leaf': 2}"
+      },
+      {
+        "algoritmo": "random_forest",
+        "cv_score": -3330.871708950612,
+        "mae": 2855.417051851848,
+        "rmse": 4430.4799963248815,
+        "r2": 0.8523823680953224,
+        "mejores_hiperparametros": "{'max_depth': 26, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'n_estimators': 300}"
+      },
+      {
+        "algoritmo": "xgboost",
+        "cv_score": -3671.997031611689,
+        "mae": 2741.8726649305554,
+        "rmse": 3644.6447204461942,
+        "r2": 0.9001042358328952,
+        "mejores_hiperparametros": "{'colsample_bytree': 0.8640130838029838, 'learning_rate': 0.061425257439339596, 'max_depth': 9, 'min_child_weight': 2, 'n_estimators': 400, 'subsample': 0.8349262400109296}"
+      }
+    ],
+    "numeric_features": [
+      "valor_lag_1",
+      "valor_lag_2",
+      "valor_lag_3",
+      "valor_roll3",
+      "valor_roll6",
+      "donaciones_lag_1",
+      "tendencia",
+      "mes",
+      "mes_sin",
+      "mes_cos",
+      "mes_campania"
+    ],
+    "categorical_features": [
+      "categoria"
+    ],
+    "categorical_values": {
+      "categoria": [
+        "alimentos",
+        "higiene",
+        "insumos_medicos",
+        "medicamentos_soporte"
+      ]
+    },
+    "class_labels": null,
+    "n_train": 144,
+    "n_test": 36,
+    "onnx_file": "proyeccion_donaciones.onnx",
+    "pickle_file": "proyeccion_donaciones.pkl",
+    "trained_at": "2026-07-07T03:34:02.249238+00:00"
+  }
+]

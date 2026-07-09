@@ -1,0 +1,795 @@
+/* Paleta "cuidado" para el personal del albergue: teal como color de marca
+   (calma, salud), coral y oro como acentos calidos para diferenciar tareas.
+   Los roles se definen una sola vez y cambian en modo oscuro. */
+:root {
+  --surface-1: #fcfcfb;
+  --page: #f9f6f2;
+  --text-primary: #201d1a;
+  --text-secondary: #5c564f;
+  --text-muted: #8c857b;
+  --gridline: #e6e0d6;
+  --baseline: #cec5b6;
+  --border: rgba(32, 29, 26, 0.1);
+  --shadow: 0 1px 2px rgba(60, 40, 10, 0.05), 0 6px 18px rgba(60, 40, 10, 0.05);
+
+  --brand: #0f7a6c;
+  --brand-strong: #0b5c51;
+  --brand-soft: rgba(15, 122, 108, 0.12);
+
+  --accent-coral: #c5623a;
+  --accent-coral-soft: rgba(197, 98, 58, 0.14);
+  --accent-gold: #a8791a;
+  --accent-gold-soft: rgba(168, 121, 26, 0.16);
+
+  --series-1: #2a78d6; /* solo para las barras de la seccion tecnica */
+
+  --sem-green: #1f8a3b;
+  --sem-green-soft: rgba(31, 138, 59, 0.12);
+  --sem-amber: #a8791a;
+  --sem-amber-soft: rgba(168, 121, 26, 0.14);
+  --sem-red: #c23b2f;
+  --sem-red-soft: rgba(194, 59, 47, 0.12);
+  --sem-teal: #0f7a6c;
+  --sem-teal-soft: rgba(15, 122, 108, 0.12);
+
+  --critical: #c23b2f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-1: #201e1b;
+    --page: #14130f;
+    --text-primary: #f7f5f1;
+    --text-secondary: #cec5b6;
+    --text-muted: #948c7e;
+    --gridline: #33302a;
+    --baseline: #443f37;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 1px 0 rgba(255, 255, 255, 0.02), 0 8px 20px rgba(0, 0, 0, 0.45);
+
+    --brand: #3fc1ae;
+    --brand-strong: #2aa694;
+    --brand-soft: rgba(63, 193, 174, 0.16);
+
+    --accent-coral: #e08056;
+    --accent-coral-soft: rgba(224, 128, 86, 0.18);
+    --accent-gold: #d3a53a;
+    --accent-gold-soft: rgba(211, 165, 58, 0.18);
+
+    --series-1: #3987e5;
+
+    --sem-green: #3fbf63;
+    --sem-green-soft: rgba(63, 191, 99, 0.16);
+    --sem-amber: #d3a53a;
+    --sem-amber-soft: rgba(211, 165, 58, 0.18);
+    --sem-red: #e0574a;
+    --sem-red-soft: rgba(224, 87, 74, 0.16);
+    --sem-teal: #3fc1ae;
+    --sem-teal-soft: rgba(63, 193, 174, 0.16);
+
+    --critical: #e0574a;
+  }
+}
+
+/* Anula la preferencia del sistema cuando el usuario elige el tema a mano
+   con el boton de la cabecera (persistido en localStorage). */
+:root[data-theme='dark'] {
+  --surface-1: #201e1b;
+  --page: #14130f;
+  --text-primary: #f7f5f1;
+  --text-secondary: #cec5b6;
+  --text-muted: #948c7e;
+  --gridline: #33302a;
+  --baseline: #443f37;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.02), 0 8px 20px rgba(0, 0, 0, 0.45);
+
+  --brand: #3fc1ae;
+  --brand-strong: #2aa694;
+  --brand-soft: rgba(63, 193, 174, 0.16);
+
+  --accent-coral: #e08056;
+  --accent-coral-soft: rgba(224, 128, 86, 0.18);
+  --accent-gold: #d3a53a;
+  --accent-gold-soft: rgba(211, 165, 58, 0.18);
+
+  --series-1: #3987e5;
+
+  --sem-green: #3fbf63;
+  --sem-green-soft: rgba(63, 191, 99, 0.16);
+  --sem-amber: #d3a53a;
+  --sem-amber-soft: rgba(211, 165, 58, 0.18);
+  --sem-red: #e0574a;
+  --sem-red-soft: rgba(224, 87, 74, 0.16);
+  --sem-teal: #3fc1ae;
+  --sem-teal-soft: rgba(63, 193, 174, 0.16);
+
+  --critical: #e0574a;
+}
+
+:root[data-theme='light'] {
+  --surface-1: #fcfcfb;
+  --page: #f9f6f2;
+  --text-primary: #201d1a;
+  --text-secondary: #5c564f;
+  --text-muted: #8c857b;
+  --gridline: #e6e0d6;
+  --baseline: #cec5b6;
+  --border: rgba(32, 29, 26, 0.1);
+  --shadow: 0 1px 2px rgba(60, 40, 10, 0.05), 0 6px 18px rgba(60, 40, 10, 0.05);
+
+  --brand: #0f7a6c;
+  --brand-strong: #0b5c51;
+  --brand-soft: rgba(15, 122, 108, 0.12);
+
+  --accent-coral: #c5623a;
+  --accent-coral-soft: rgba(197, 98, 58, 0.14);
+  --accent-gold: #a8791a;
+  --accent-gold-soft: rgba(168, 121, 26, 0.16);
+
+  --series-1: #2a78d6;
+
+  --sem-green: #1f8a3b;
+  --sem-green-soft: rgba(31, 138, 59, 0.12);
+  --sem-amber: #a8791a;
+  --sem-amber-soft: rgba(168, 121, 26, 0.14);
+  --sem-red: #c23b2f;
+  --sem-red-soft: rgba(194, 59, 47, 0.12);
+  --sem-teal: #0f7a6c;
+  --sem-teal-soft: rgba(15, 122, 108, 0.12);
+
+  --critical: #c23b2f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--page);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+.app-header {
+  position: relative;
+  margin-bottom: 28px;
+  padding: 20px 24px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 0% 0%, var(--brand-soft), transparent 55%),
+    radial-gradient(circle at 100% 100%, var(--accent-coral-soft), transparent 60%);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-1);
+  color: var(--text-secondary);
+}
+
+.theme-toggle:hover {
+  background: var(--surface-1);
+  color: var(--brand);
+}
+
+.brand-mark {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+}
+
+.app-header p {
+  color: var(--text-secondary);
+  max-width: 62ch;
+}
+
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.card .subtitle {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.status {
+  color: var(--text-muted);
+  padding: 12px 0;
+}
+
+.status.error {
+  color: var(--critical);
+}
+
+/* Tabla de modelos */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--baseline);
+  padding: 6px 10px;
+}
+
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--gridline);
+}
+
+td.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+th.num {
+  text-align: right;
+}
+
+/* Barras horizontales: marcas delgadas, extremo redondeado 4px,
+   base anclada, etiqueta directa fuera de la barra */
+.hbar-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 64px;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.hbar-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hbar-track {
+  height: 14px;
+  border-left: 2px solid var(--baseline);
+  display: flex;
+  align-items: center;
+}
+
+.hbar-fill {
+  height: 12px;
+  background: var(--series-1);
+  border-radius: 0 4px 4px 0;
+  min-width: 2px;
+  transition: width 0.25s ease;
+}
+
+.hbar-value {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+/* Formulario de prediccion */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px 16px;
+  margin: 12px 0 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 3px;
+}
+
+.field input,
+.field select,
+.model-picker select {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--baseline);
+  border-radius: 6px;
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.field input:focus,
+.field select:focus,
+.model-picker select:focus {
+  outline: 2px solid var(--brand-soft);
+  border-color: var(--brand);
+}
+
+.model-picker {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.model-picker label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--brand);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 999px;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* :not(.task-card):not(.theme-toggle) evita que este relleno gane por
+   especificidad sobre esos botones (tambien son <button> pero tienen su
+   propio estilo de hover). */
+button:hover:not(:disabled):not(.task-card):not(.theme-toggle) {
+  background: var(--brand-strong);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* Menu de tareas (pantalla principal) */
+.task-menu h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.task-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  forced-color-adjust: none;
+  background-color: var(--surface-1);
+  border: 1px solid var(--border);
+  border-top: 3px solid transparent;
+  border-radius: 12px;
+  padding: 20px 22px 22px;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+/* El fondo nunca cambia por hover/foco/click: solo el borde y el icono. */
+.task-card:hover,
+.task-card:focus,
+.task-card:focus-visible,
+.task-card:active {
+  background-color: var(--surface-1);
+  color: var(--text-primary);
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+}
+
+.task-card:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.task-card.accent-teal {
+  border-top-color: var(--brand);
+}
+
+.task-card.accent-teal:hover {
+  border-color: var(--border);
+  border-top-color: var(--brand);
+}
+
+.task-card.accent-coral {
+  border-top-color: var(--accent-coral);
+}
+
+.task-card.accent-coral:hover {
+  border-color: var(--border);
+  border-top-color: var(--accent-coral);
+}
+
+.task-card.accent-gold {
+  border-top-color: var(--accent-gold);
+}
+
+.task-card.accent-gold:hover {
+  border-color: var(--border);
+  border-top-color: var(--accent-gold);
+}
+
+.task-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+}
+
+.task-card.accent-teal .task-icon-badge {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.task-card.accent-coral .task-icon-badge {
+  background: var(--accent-coral-soft);
+  color: var(--accent-coral);
+}
+
+.task-card.accent-gold .task-icon-badge {
+  background: var(--accent-gold-soft);
+  color: var(--accent-gold);
+}
+
+.task-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.task-description {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.back-link {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--brand);
+  font: inherit;
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.back-link:hover {
+  background: none;
+  color: var(--brand-strong);
+}
+
+/* Seccion colapsada con info tecnica, para el equipo de ML */
+.technical-details {
+  margin-top: 8px;
+  color: var(--text-secondary);
+}
+
+.technical-details summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 8px 0;
+  list-style: none;
+}
+
+.technical-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.technical-details summary::before {
+  content: '▸';
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 0.15s ease;
+}
+
+.technical-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.technical-details[open] summary {
+  margin-bottom: 8px;
+}
+
+/* Secciones del formulario de prediccion */
+.form-section {
+  border: none;
+  border-top: 1px solid var(--gridline);
+  padding: 14px 0 0;
+  margin: 0 0 14px;
+}
+
+.form-section legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0 0 8px;
+  color: var(--text-primary);
+}
+
+/* Tarjeta de resultado: color semantico + mensaje en lenguaje humano */
+.result-card {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-left: 5px solid transparent;
+  animation: result-in 0.3s ease;
+}
+
+@keyframes result-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.result-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.result-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.result-confidence {
+  margin-top: 6px;
+  font-size: 0.85rem !important;
+  color: var(--text-muted) !important;
+}
+
+.result-green {
+  background: var(--sem-green-soft);
+  border-color: var(--sem-green-soft);
+  border-left-color: var(--sem-green);
+}
+
+.result-green .result-eyebrow {
+  color: var(--sem-green);
+}
+
+.result-amber {
+  background: var(--sem-amber-soft);
+  border-color: var(--sem-amber-soft);
+  border-left-color: var(--sem-amber);
+}
+
+.result-amber .result-eyebrow {
+  color: var(--sem-amber);
+}
+
+.result-red {
+  background: var(--sem-red-soft);
+  border-color: var(--sem-red-soft);
+  border-left-color: var(--sem-red);
+}
+
+.result-red .result-eyebrow {
+  color: var(--sem-red);
+}
+
+.result-teal {
+  background: var(--sem-teal-soft);
+  border-color: var(--sem-teal-soft);
+  border-left-color: var(--sem-teal);
+}
+
+.result-teal .result-eyebrow {
+  color: var(--sem-teal);
+}
+
+/* Franja "como funciona": 3 pasos simples, solo orientativos */
+.how-it-works {
+  margin-bottom: 24px;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.how-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.how-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.how-step h3 {
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.how-step p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* Preguntas frecuentes */
+.faq h2 {
+  margin-bottom: 14px;
+}
+
+.faq-item {
+  border-top: 1px solid var(--gridline);
+  padding: 12px 0;
+}
+
+.faq-item:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.faq-item:last-of-type {
+  padding-bottom: 0;
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  list-style: none;
+  transition: color 0.15s ease;
+}
+
+.faq-item summary:hover {
+  color: var(--brand);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::before {
+  content: '▸';
+  flex-shrink: 0;
+  color: var(--brand);
+  transition: transform 0.15s ease;
+}
+
+.faq-item[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.faq-item p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 8px;
+  padding-left: 1.5em;
+}
+
+/* Tarjeta de ayuda / contacto */
+.help-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.help-card h2 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.help-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Pie de pagina */
+.app-footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gridline);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
